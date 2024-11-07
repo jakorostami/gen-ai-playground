@@ -53,7 +53,7 @@ class MultiChatBot:
         responses = []
         
         if target_ai in ["claude", "both"]:
-            # Get Claude's response
+            # Get Claudes response
             self.session_state.messages.append({"role": "user", "content": user_input})
             claude_response = self.generate_claude_message(
                 messages=self.session_state.messages,
@@ -71,7 +71,7 @@ class MultiChatBot:
 
         if target_ai in ["gemini", "both"]:
             try:
-                # Get Gemini's response
+                # Get Geminis response
                 gemini_response = self.generate_gemini_message(user_input)
                 responses.append(f"Gemini: {gemini_response}")
                 self.session_state.gemini_history.append({
@@ -103,7 +103,7 @@ class MultiChatBot:
         previous_message = topic
         
         for i in range(turns):
-            # Claude's turn
+            # Claudes turn
             claude_prompt = (f"Respond to this message in the dialogue about '{topic}': "
                             f"'{previous_message}'. Be concise and engaging.")
             
@@ -111,7 +111,7 @@ class MultiChatBot:
             claude_text = claude_response.replace("Claude: ", "")
             dialogue_parts.append(f"Claude: {claude_text}")
             
-            # Use Claude's response as input for Gemini
+            # Use Claudes response as input for Gemini
             gemini_prompt = (f"You are in a dialogue about '{topic}'. "
                             f"Respond to Claude's message: '{claude_text}'. "
                             f"Be concise and engaging.")
